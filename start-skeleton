@@ -1,0 +1,31 @@
+<!--Bookstore HTML-->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p{
+display:none;
+}
+img {
+width:50%;
+height:50%;
+display:none;
+}
+body{
+background-image:url("https://upload.wikimedia.org/wikipedia/commons/b/ba/Sea_and_sky_light.jpg");
+background-repeat:no-repeat;
+background-size: cover;
+}
+h3{
+font-family:arial;
+}
+</style>
+</head>
+<body onload="fileUpload()">
+
+
+
+
+</body>
+</html>
+
