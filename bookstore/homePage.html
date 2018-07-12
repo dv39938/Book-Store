@@ -1,0 +1,167 @@
+<html>
+
+<head>
+
+<title>
+Books 4050
+</title>
+
+<meta charset="UTF-8">
+
+<img src="./book.jpg" style="width:150; height:150">
+
+
+
+<link rel="stylesheet" href="homePage.css">
+</head>
+
+
+
+<body style="background-color: bisque; ">
+
+
+        <p style="margin-left:70%; margin-top:-100px;"> 
+                Username: 
+                <input type="text" id=usrName>
+                Password: 
+                    <input type="text" id=passWd>
+                    <input type="button" value="Login" id=loginButton>
+                    <br />
+            
+                 <a href="test.com/a/a/a">Sign up</a>   
+            
+            </p>
+
+
+<button id="aa" onclick=toggleCart() style="float:right;width:50px;height:600px;position:absolute;top:160px;right:0px;z-index:10;">
+        View Cart
+</button>
+
+<div id="test"  
+style="background:whitesmoke; margin:3px; width:350px; height:600px; float:right; position:absolute; right:0px; top:157px;visibility:hidden; ">
+
+<!--   Div contains cart     -->
+
+<p style="text-align: center; ">
+Cart
+</p>
+
+
+<table id="cartContents" style="border:1px solid black;right:50px;width:90%; text-align: center;">
+<tr style="border:1px solid black;">
+
+        <td class="cartData">Title</td>       
+        <td class="cartData">Price</td>
+        <td class="cartData">Remove?</td>
+</tr>
+
+<tr id="row1" style="border:1px solid black;">
+        <td class="cartData">The Last Wish</td>       
+        <td class="cartData">$23.99</td>
+        <td class="cartData">
+                <input type="button" onclick=removeFromCart(row1) id="cart1" value="X" style="align-content: center">
+        </td>
+
+</tr>
+
+<tr id="row2" style="border:1px solid black;">
+        <td class="cartData">Green Eggs and Ham</td>       
+        <td class="cartData">$12.99</td>
+        <td class="cartData">
+                <input type="button" id="cart2" onclick=removeFromCart(row2) value="X" style="align-content: center">
+        </td>
+
+</tr>
+
+
+</table>
+
+<input type="button" value="Checkout" style="position:absolute; left:45%; bottom:0%">
+
+<!--  End of cart  -->
+</div>
+<p style="position:absolute; top:200px; left:800px;">
+        Search:
+<input type="text" id="searchFor" >
+<select id="searchBy">
+        <option value="Title">Title</option>
+        <option value="Author">Author</option>
+        <option value="ISBN">ISBN</option>
+        <option value="Genre">Genre</option>
+</select>
+<input type="button" value="search" onclick=bookSearch()>
+</p>
+
+<table id="catalogContent" 
+style="position:absolute;top:400px;left:625px;border:1px solid black;text-align: center;width:700px;">
+
+<tr>
+        <td class="catalogData">Cover</td>
+        <td class="catalogData">Title</td>
+        <td class="catalogData">Author</td> 
+        <td class="catalogData">Price</td>
+        <td class="catalogData">Add to Cart</td>
+</tr>
+
+<tr>
+        <td class="catalogData">   TBD   </td>
+        <td class="catalogData">  Baptism of Fire   </td>
+        <td class="catalogData">  Andrzej Sapkowski     </td>
+        <td class="catalogData">  $23.99    </td>
+        <td class="catalogData"> 
+        <input type="button" id="cat1"  value="√" style="align-content: center">
+        </td>    
+</tr>
+
+</table>
+
+
+
+
+</body>
+
+
+</html>
+
+<script>
+
+
+function toggleCart(){
+var cart = document.getElementById("test");
+
+console.log( cart.style.visibility );
+
+if(cart.style.visibility=="hidden"){
+cart.style.visibility="visible";
+}
+else{
+cart.style.visibility="hidden";
+}
+
+}//toggle cart
+
+function removeFromCart(thisButton){
+        
+       
+        var cartStuff=thisButton.parentNode;
+        var name = thisButton.id;
+
+        cartStuff.removeChild(thisButton);
+        console.log("Deleted: "+name);
+
+
+}//removeFromCart
+
+
+function bookSearch(){
+        var phrase = document.getElementById("searchFor").value;
+        var type = document.getElementById("searchBy").value;
+
+        console.log("Searching for: "+phrase+" Which is a: "+type);
+
+
+
+}
+
+
+</script>

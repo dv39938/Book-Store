@@ -1,0 +1,137 @@
+<html>
+
+<head>
+
+<title>
+Books 4050
+</title>
+
+<meta charset="UTF-8">
+
+<img src="./book.jpg" style="width:150; height:150">
+
+<p id="header" style="position:absolute; top:15%; left:50%;">
+    Order Summary
+</p>
+
+<link rel="stylesheet" href="homePage.css">
+</head>
+
+<body style="background-color: bisque; ">
+
+    <table id="orderContent" 
+    style="visibility:visible;position:absolute;top:400px;left:625px;border:1px solid black;text-align: center;width:700px;">
+    
+    <tr>
+            <td class="catalogData">Cover</td>
+            <td class="catalogData">Title</td>
+            <td class="catalogData">Author</td>
+            <td class="catalogData">Price</td>
+            <td class="catalogData">Remove</td>
+    </tr>
+    
+    <tr>
+            <td class="catalogData">   TBD   </td>
+            <td class="catalogData">  Baptism of Fire   </td>
+            <td class="catalogData">  Andrzej Sapkowski     </td>
+            <td class="catalogData">  $23.99    </td>
+            <td class="catalogData"> 
+            <input type="button" id="cat1"  value="X" style="align-content: center">
+            </td>    
+    </tr>
+    
+    </table>
+
+<input type="button" id="cButton" value="Confirm Order" onclick=confirmOrder() style="position:absolute; top:60%; left:50%;">
+
+<p id=orderInfo style="visibility:hidden;position:absolute;top:400px;left:825px;">
+Credit Card Number: 
+<input type="text" id=ccNum>
+<br />
+Name on Card: 
+<input type="text" id=ccName>
+<br />
+Billing Address:
+<input type="text" id=ccAddr>
+<br />
+Zip Code: 
+<input type="text" id=ccZip>
+
+
+</p>
+
+<p id=purchaseSum style="visibility:hidden; position:absolute; top:400px; left:825px; white-space:pre-line">
+
+</p>
+
+
+
+</body>
+
+</html>
+
+<script>
+
+function confirmOrder(){
+    document.getElementById("orderContent").style.visibility="hidden";
+    document.getElementById("orderInfo").style.visibility="visible";
+    document.getElementById("header").textContent="Enter Billing Information";
+
+    var btn=document.getElementById("cButton");
+    btn.value="Submit";
+    btn.onclick= submitCC;
+
+}//confirmOrder
+
+function submitCC(){
+    document.getElementById("header").textContent="Purchase Summary";
+    document.getElementById("orderInfo").style.visibility="hidden";
+    var num = document.getElementById("ccNum").value;
+    var name = document.getElementById("ccName").value;
+    var addr = document.getElementById("ccAddr").value;
+    var zip =document.getElementById("ccZip").value;
+    console.log("Name: "+name+" Num: "+num+" Addr: "+addr+" Zip: "+zip);
+    var btn=document.getElementById("cButton");
+    btn.style.visibility="hidden";
+
+    summaryDisplay(num,name,addr,zip);
+
+}//submitCC
+
+function summaryDisplay(num, name, addr, zip){
+var items="|| ";
+var table = document.getElementById("orderContent");
+var rows = table.rows;
+
+
+for(var i=1; i<rows.length;i++){
+
+var cols = rows[i].cells;
+
+for(var y=1; y<cols.length-1; y++){
+items+=cols[y].innerHTML;
+
+if(y==cols.length-2){
+items+=" ||";
+}//if
+else{
+items +=" | ";
+}//else
+
+}//inner for
+items+="\n";
+}//outer for
+
+console.log(items);
+
+
+items+="\n Shipped to: "+name+ "\n At: "+addr+"  "+zip;
+items+="\n Using: "+num;
+console.log(items);
+
+var summary= document.getElementById("purchaseSum");
+summary.textContent=items;
+summary.style.visibility="visible";
+
+}//summaryDisplay
+</script>
