@@ -1,0 +1,10 @@
+Homepage needs cleaning up.
+- Should look impressive. First page user sees.
+Billing Page
+- Add fields for billing address
+- Add reserve option
+User Profile
+- Separate information with tabs. Don't put all on one page.
+- Same with edit profile page.
+Admin Page
+- Separate types of info into tabs (i.e. orders, users, books)
